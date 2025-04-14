@@ -57,5 +57,13 @@ auto main( int args, const char** params ) -> int
     auto str_to_bytes = stringToBytes("Hello World");
     auto str_key_to_bytes = stringToBytes("insecure123");
 
+    auto str_encoded = xorEncode(str_to_bytes, str_key_to_bytes);
+
+    std::cout << "Encrypted Bytes :: " << bytesToString(str_encoded) << '\n';
+
+    auto decrypted_bytes = xorDecode(str_encoded, str_key_to_bytes);
+
+    std::cout << "Decrypted Bytes :: " << bytesToString(decrypted_bytes) << '\n';
+
     return 0x00;
 }
